@@ -1,0 +1,114 @@
+/* Start variables */
+:root {
+    --heading: "Permanent Marker", "cursive";
+}
+/* End variables */
+
+/* Start global rules */
+body {
+    background-color: #e5e7eb;
+    font-family: "Inter", "sans-serif";
+}
+main {
+    padding-block: 10px;
+}
+.heading {
+    font-family: var(--heading);
+    font-size: 3.5em;
+    margin-block: 0 20px;
+}
+@media (max-width: 767px) {
+    .heading {
+        text-align: center;
+    }
+}
+.container {
+    padding-inline: 15px;
+    margin-inline: auto;
+}
+/* small screens */
+@media (min-width: 768px) {
+    .container {
+        width: 720px;
+    }
+}
+/* Medium screens */
+@media (min-width: 992px) {
+    .container {
+        width: 960px;
+    }
+}
+/* Large screens */
+@media (min-width: 1200px) {
+    .container {
+        width: 1140px;
+    }
+}
+/* End global rules */
+
+/* Start components */
+
+/* Start badge component */
+.badge {
+    display: inline-block;
+    padding: 5px 15px;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+}
+.badge.pill {
+    border-radius: 12px;
+}
+.badge.red {
+    background-color: #fee2e2;
+    color: #991b1b;
+}
+.badge.yellow {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+.badge.green {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+.badge.blue {
+    background-color: #dbeafe;
+    color: #1e40af;
+}
+.badge.indigo {
+    background-color: #e0e7ff;
+    color: #3730a3;
+}
+.badge.purple {
+    background-color: #ede9fe;
+    color: #5b21b6;
+}
+.badge.pink {
+    background-color: #fce7f3;
+    color: #9d174d;
+}
+/* End badge component */
+
+/* End components */
+
+/* Start badhges section */
+.badges .badges-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+@media (max-width: 767px) {
+    .badges .badges-container {
+        justify-content: center;
+    }
+}
+.badges .badges-container > div {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+/* End badhges section */
