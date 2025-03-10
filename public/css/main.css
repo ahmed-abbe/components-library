@@ -5,12 +5,29 @@
 /* End variables */
 
 /* Start global rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
 body {
     background-color: #e5e7eb;
     font-family: "Inter", "sans-serif";
 }
 main {
     padding-block: 10px;
+}
+section {
+    padding-block: 30px;
+    border-bottom: 2px solid #ddd;
+}
+img {
+    max-width: 100%;
+}
+main > .heading {
+    font-size: 4em;
+    margin-block: 20px;
+    text-align: center;
 }
 .heading {
     font-family: var(--heading);
@@ -91,9 +108,261 @@ main {
 }
 /* End badge component */
 
+/* Start banner component */
+.banner {
+    padding: 16px;
+    border-radius: 6px;
+}
+.banner.success {
+    background-color: #ecfdf5;
+}
+.banner.warning {
+    background-color: #fffbeb;
+}
+.banner.error {
+    background-color: #fef2f2;
+}
+.banner.neutral {
+    background-color: #eff6ff;
+}
+.banner h3 {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+}
+.banner.success h3 {
+    color: #065f46;
+}
+.banner.warning h3,
+.banner.error h3 {
+    color: #92400e;
+}
+.banner.neutral h3 {
+    color: #1e40af;
+}
+.banner .icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    margin-right: 12px;
+}
+.banner p {
+    margin: 8px 0 0 30px;
+}
+.banner.success p {
+    color: #047857;
+}
+.banner.warning p,
+.banner.error p {
+    color: #b45309;
+}
+.banner.neutral p {
+    color: #1c51b9;
+}
+/* End banner component */
+
+/* Start Card Component */
+.card {
+    position: relative;
+    width: 400px;
+    max-width: 100%;
+    padding: 0 24px 32px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    text-align: center;
+    margin-inline: auto;
+    -webkit-transition: box-shadow 0.3s;
+    -moz-transition: box-shadow 0.3s;
+    -ms-transition: box-shadow 0.3s;
+    -o-transition: box-shadow 0.3s;
+    transition: box-shadow 0.3s;
+}
+.card:hover {
+    box-shadow: 0 4px 25px 0 rgb(0 0 0 / 10%);
+}
+.card .icon {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-inline: auto;
+    border-radius: 6px;
+    top: -24px;
+    /* change top value when chaning width or use transform: translateY(-50%) */
+    box-shadow: 0 4px 6px -2px rgb(0 0 0 / 5%),
+        0 10px 15px -3px rgb(0 0 0 / 10%);
+}
+.card .icon svg {
+    font-size: 28px;
+    color: white;
+}
+.card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #111827;
+    margin-block: 20px;
+}
+.card p {
+    color: #6b7280;
+    line-height: 24px;
+    margin: 0;
+}
+/* End Card Component */
+
+/* Start testimonial component */
+.testimonial {
+    margin-bottom: 50px;
+}
+@media (min-width: 768px) {
+    .testimonial {
+        height: 400px;
+    }
+}
+.testimonial .review {
+    max-width: 800px;
+    font-size: 20px;
+    line-height: 32px;
+}
+
+/* Start testimonial without image */
+.testimonial.without-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 72px 32px;
+    background-color: #f9fafb;
+    position: relative;
+    overflow: hidden;
+}
+.testimonial.without-image::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background-image: radial-gradient(#e5e7eb 2px, transparent 0);
+    background-size: 20px 20px;
+    bottom: -275px;
+    left: -200px;
+}
+@media (min-width: 768px) {
+    .testimonial.without-image {
+        padding: 32px;
+    }
+    .testimonial.without-image::before {
+        bottom: -150px;
+        left: -150px;
+    }
+}
+.testimonial.without-image img {
+    width: 180px;
+}
+.testimonial.without-image .review-info {
+    position: relative;
+    z-index: 3;
+}
+@media (min-width: 768px) {
+    .testimonial.without-image .review-info {
+        text-align: center;
+    }
+}
+.testimonial.without-image .review {
+    margin-block: 40px 32px;
+    color: #111827;
+}
+.testimonial.without-image .review::before,
+.testimonial.without-image .review::after {
+    content: "\0022";
+    font-weight: bold;
+}
+.testimonial.without-image .name {
+    display: block;
+}
+
+.testimonial.without-image .name,
+.testimonial.without-image .position {
+    font-weight: 500;
+}
+@media (min-width: 768px) {
+    .testimonial.without-image .name::after {
+        content: "/";
+        color: #2e59f3;
+        margin-inline: 5px;
+        font-weight: bold;
+    }
+    .testimonial.without-image .name {
+        display: inline;
+    }
+}
+.testimonial.without-image .position {
+    color: #6b7280;
+}
+/* End testimonial without image */
+
+/* Start testimonial with image */
+.testimonial.with-image {
+    --main-color: #2545b8;
+    padding: 0 20px 20px;
+    background-image: linear-gradient(
+        180deg,
+        white 0 25%,
+        var(--main-color) 25%
+    );
+    color: white;
+}
+.testimonial.with-image img {
+    object-fit: cover;
+    width: 100%;
+    max-height: 210px;
+    border-radius: 12px;
+    margin-bottom: 48px;
+}
+@media (min-width: 768px) {
+    .testimonial.with-image {
+        display: flex;
+        padding: 0 50px;
+        background-color: #2545b8;
+        background-size: 0%;
+    }
+    .testimonial.with-image .image {
+        position: relative;
+        height: calc(100% + 40px);
+        top: -20px;
+        margin-right: 32px;
+    }
+    .testimonial.with-image img {
+        width: fit-content;
+        max-width: 300px;
+        min-height: 100%;
+        margin-bottom: 0;
+    }
+}
+.testimonial.with-image .review-info {
+    align-self: center;
+    font-weight: 500;
+}
+.testimonial.with-image .quote {
+    width: 60px;
+    height: 45px;
+    color: rgb(255 255 255 / 25%);
+}
+.testimonial.with-image .review {
+    margin-block: 25px;
+}
+.testimonial.with-image .name {
+    display: block;
+    font-weight: bold;
+}
+/* End testimonial with image */
+
+/* End testimonial component */
+
 /* End components */
 
-/* Start badhges section */
+/* Start badges section */
 .badges .badges-container {
     display: flex;
     flex-wrap: wrap;
@@ -111,4 +380,27 @@ main {
     justify-content: center;
     gap: 15px;
 }
-/* End badhges section */
+/* End badges section */
+
+/* Start banners section */
+.banners .banner-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+}
+.banners .banner-container > div {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    position: relative;
+}
+.banners .banner-container > div:not(:last-of-type)::after {
+    content: "";
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 1px;
+    background-color: #c2bfbf;
+    bottom: -12px;
+    left: 10px;
+}
+/* End banners section */
