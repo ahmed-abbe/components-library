@@ -3,6 +3,8 @@ import Badge from "./components/Badge/Badge";
 import Banner from "./components/Banners/Index";
 import Card from "./components/Cards/Index";
 import Testimonials from "./components/Testimonials/Index";
+import ToolTip from "./components/ToolTip/Index";
+import Popup from "./components/Popup/Index";
 import { HiOutlineCloudUpload } from "react-icons/hi";
 import avatar from "./assets/avatar.jpg";
 
@@ -18,6 +20,23 @@ const App = () => {
         "purple",
         "pink",
     ];
+
+    const roles = ["success", "warning", "error", "neutral"];
+    const bannersTitle = [
+        "Congratulations!",
+        "Attention",
+        "There is a problem with your application",
+        "Update available",
+    ];
+    const popupMessages = [
+        "Your work has been saved",
+        "A network error was detected",
+        "Please re-save your work again",
+        "Please read updated information",
+    ];
+
+    // First index is empty to get the default badge UI
+    const tooltipColors = ["", "blue", "pink", "green"];
 
     return (
         <main className="components-library">
@@ -41,64 +60,25 @@ const App = () => {
                 <div className="container">
                     <Heading>Banners</Heading>
                     <div className="banner-container">
-                        <div>
-                            <Banner role="success">
-                                <Banner.Title>Congratulations!</Banner.Title>
-                                <Banner.Description>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Aliquid pariatur, ipsum
-                                    similique veniam.
-                                </Banner.Description>
-                            </Banner>
-                            <Banner role="success">
-                                <Banner.Title>Congratulations!</Banner.Title>
-                            </Banner>
-                        </div>
-                        <div>
-                            <Banner role="warning">
-                                <Banner.Title>Attention</Banner.Title>
-                                <Banner.Description>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Aliquid pariatur, ipsum
-                                    similique veniam quo totam eius aperiam
-                                    dolorum.
-                                </Banner.Description>
-                            </Banner>
-                            <Banner role="warning">
-                                <Banner.Title>Attention</Banner.Title>
-                            </Banner>
-                        </div>
-                        <div>
-                            <Banner role="error">
-                                <Banner.Title>
-                                    There is a problem with your application
-                                </Banner.Title>
-                                <Banner.Description>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Aliquid pariatur, ipsum
-                                    similique veniam quo totam eius aperiam
-                                    dolorum.
-                                </Banner.Description>
-                            </Banner>
-                            <Banner role="error">
-                                <Banner.Title>
-                                    There is a problem with your application
-                                </Banner.Title>
-                            </Banner>
-                        </div>
-                        <div>
-                            <Banner role="neutral">
-                                <Banner.Title>Update available</Banner.Title>
-                                <Banner.Description>
-                                    Lorem ipsum dolor sit amet consectetur
-                                    adipisicing elit. Aliquid pariatur, ipsum
-                                    similique veniam.
-                                </Banner.Description>
-                            </Banner>
-                            <Banner role="neutral">
-                                <Banner.Title>Update available</Banner.Title>
-                            </Banner>
-                        </div>
+                        {roles.map((role, index) => (
+                            <div key={`${role}-${index}`}>
+                                <Banner role={role}>
+                                    <Banner.Title>
+                                        {bannersTitle[index]}
+                                    </Banner.Title>
+                                    <Banner.Description>
+                                        Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit. Aliquid pariatur,
+                                        ipsum similique veniam.
+                                    </Banner.Description>
+                                </Banner>
+                                <Banner role={role}>
+                                    <Banner.Title>
+                                        {bannersTitle[index]}
+                                    </Banner.Title>
+                                </Banner>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -139,6 +119,40 @@ const App = () => {
                     </Testimonials>
                 </div>
             </section>
+            <section className="tooltips">
+                <div className="container">
+                    <Heading>Tooltip</Heading>
+                    <div className="tooltips-container">
+                        {tooltipColors.map((color) => (
+                            <div key={`tooltip-${color}`}>
+                                <ToolTip theme="dark" color={color}>
+                                    <ToolTip.Title>Archive notes</ToolTip.Title>
+                                    <ToolTip.Description>
+                                        Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit oluptatum tenetur.
+                                    </ToolTip.Description>
+                                </ToolTip>
+                                <ToolTip theme="light" color={color}>
+                                    <ToolTip.Title>Archive notes</ToolTip.Title>
+                                    <ToolTip.Description>
+                                        Lorem ipsum dolor sit amet consectetur
+                                        adipisicing elit oluptatum tenetur.
+                                    </ToolTip.Description>
+                                </ToolTip>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+            <Heading>toast popups</Heading>
+            {roles.map((role, index) => (
+                <Popup key={`${role}-${index}`} role={role}>
+                    <Popup.Title>{role}</Popup.Title>
+                    <Popup.Description>
+                        {popupMessages[index]}
+                    </Popup.Description>
+                </Popup>
+            ))}
         </main>
     );
 };
